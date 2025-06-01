@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="f35ea64" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.7.0">
+  <bpmn:process id="Idp-application" name="Idp-Application" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Document upload process initiated">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formId="Form-upload" />
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_0f7f39d</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0f7f39d" sourceRef="StartEvent_1" targetRef="extractdats" />
+    <bpmn:serviceTask id="extractdats" name="extract data" zeebe:modelerTemplate="cccfdfa0-9d13-4592-a161-12850527dd32" zeebe:modelerTemplateVersion="1748691720931" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjE5LjE3ODkiIGhlaWdodD0iMTkuMTc4OSIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC4wMSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOm11bHRpcGx5Ii8+CjxwYXRoIGQ9Ik0xNi43ODA2IDcuMTkyMDhIMTEuOTg1OVYyLjM5NzM3SDE2Ljc4MDZWNy4xOTIwOFpNMTMuMTg0NiA1Ljk5MzRIMTUuNTgxOVYzLjU5NjA1SDEzLjE4NDZWNS45OTM0WiIgZmlsbD0iI0ZDNUQwRCIvPgo8cGF0aCBkPSJNMTAuMTg3OSA4Ljk5MDFWNS4zOTQwN0g1LjM5MzE4VjEzLjc4NDhIMTMuNzgzOVY4Ljk5MDFIMTAuMTg3OVpNNi41OTE4NiA2LjU5Mjc0SDguOTg5MjFWOC45OTAxSDYuNTkxODZWNi41OTI3NFpNOC45ODkyMSAxMi41ODYxSDYuNTkxODZWMTAuMTg4OEg4Ljk4OTIxVjEyLjU4NjFaTTEyLjU4NTIgMTIuNTg2MUgxMC4xODc5VjEwLjE4ODhIMTIuNTg1MlYxMi41ODYxWiIgZmlsbD0iI0ZDNUQwRCIvPgo8cGF0aCBkPSJNMTUuNTgxOSAxNi43ODE1SDMuNTk1MTZDMy4yNzczNyAxNi43ODExIDIuOTcyNjkgMTYuNjU0NyAyLjc0Nzk3IDE2LjQzQzIuNTIzMjYgMTYuMjA1MyAyLjM5Njg1IDE1LjkwMDYgMi4zOTY0OCAxNS41ODI4VjMuNTk2MDVDMi4zOTY4NSAzLjI3ODI1IDIuNTIzMjYgMi45NzM1NyAyLjc0Nzk3IDIuNzQ4ODZDMi45NzI2OSAyLjUyNDE0IDMuMjc3MzcgMi4zOTc3MyAzLjU5NTE2IDIuMzk3MzdIOS41ODg1NVYzLjU5NjA1SDMuNTk1MTZWMTUuNTgyOEgxNS41ODE5VjkuNTg5NDRIMTYuNzgwNlYxNS41ODI4QzE2Ljc4MDMgMTUuOTAwNiAxNi42NTM5IDE2LjIwNTMgMTYuNDI5MSAxNi40M0MxNi4yMDQ0IDE2LjY1NDcgMTUuODk5NyAxNi43ODExIDE1LjU4MTkgMTYuNzgxNVoiIGZpbGw9IiMxNjE2MTYiLz4KPC9zdmc+Cg==">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:idp-extraction-connector-template:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="=document" target="input.document" />
+          <zeebe:input source="=[&#10;  {&#10;    &#34;name&#34;: &#34;Customer-ID&#34;,&#10;    &#34;prompt&#34;: &#34;customer_id&#34;&#10;  },&#10;  {&#10;    &#34;name&#34;: &#34;Address&#34;,&#10;    &#34;prompt&#34;: &#34;address&#34;&#10;  },&#10;  {&#10;    &#34;name&#34;: &#34;TotalAmount&#34;,&#10;    &#34;prompt&#34;: &#34;total_amount&#34;&#10;  }&#10;]" target="input.taxonomyItems" />
+          <zeebe:input source="={&#10;  &#34;modelId&#34;: &#34;anthropic.claude-3-sonnet-20240229-v1:0&#34;&#10;}" target="input.converseData" />
+          <zeebe:input source="aws" target="baseRequest.type" />
+          <zeebe:input source="credentials" target="baseRequest.authentication.type" />
+          <zeebe:input source="{{secrets.IDP_AWS_ACCESSKEY}}" target="baseRequest.authentication.accessKey" />
+          <zeebe:input source="{{secrets.IDP_AWS_SECRETKEY}}" target="baseRequest.authentication.secretKey" />
+          <zeebe:input source="{{secrets.IDP_AWS_BUCKET_NAME}}" target="baseRequest.s3BucketName" />
+          <zeebe:input source="AWS_TEXTRACT" target="baseRequest.extractionEngineType" />
+          <zeebe:input source="{{secrets.IDP_AWS_REGION}}" target="baseRequest.configuration.region" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultVariable" value="result" />
+          <zeebe:header key="retryBackoff" value="PT0S" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0f7f39d</bpmn:incoming>
+      <bpmn:outgoing>Flow_14o1wiy</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_14o1wiy" sourceRef="extractdats" targetRef="Activity_review" />
+    <bpmn:userTask id="Activity_review" name="review">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_14o1wiy</bpmn:incoming>
+      <bpmn:outgoing>Flow_081ezaz</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_0zq5rp0" name="Document extraction completed.">
+      <bpmn:incoming>Flow_081ezaz</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_081ezaz" sourceRef="Activity_review" targetRef="Event_0zq5rp0" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Idp-application">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="150" y="100" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="125" y="143" width="87" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0h6qjdy_di" bpmnElement="extractdats">
+        <dc:Bounds x="240" y="78" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zhsdv7_di" bpmnElement="Activity_review">
+        <dc:Bounds x="400" y="78" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0zq5rp0_di" bpmnElement="Event_0zq5rp0">
+        <dc:Bounds x="562" y="100" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="553" y="143" width="54" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0f7f39d_di" bpmnElement="Flow_0f7f39d">
+        <di:waypoint x="186" y="118" />
+        <di:waypoint x="240" y="118" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14o1wiy_di" bpmnElement="Flow_14o1wiy">
+        <di:waypoint x="340" y="118" />
+        <di:waypoint x="400" y="118" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_081ezaz_di" bpmnElement="Flow_081ezaz">
+        <di:waypoint x="500" y="118" />
+        <di:waypoint x="562" y="118" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
