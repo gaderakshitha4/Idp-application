@@ -6,16 +6,25 @@
     "version": "f35ea64"
   },
   "schemaVersion": 18,
-  "id": "Form-upload",
+  "id": "upload-document",
   "components": [
     {
-      "label": "UploadFile",
-      "type": "filepicker",
+      "text": "Upload Document",
+      "type": "text",
       "layout": {
-        "row": "Row_03kfxc0",
+        "row": "Row_13i8klq",
         "columns": null
       },
-      "id": "Field_0vg6bc0",
+      "id": "Field_1bhyj2f"
+    },
+    {
+      "label": "File picker",
+      "type": "filepicker",
+      "layout": {
+        "row": "Row_0wtw33l",
+        "columns": null
+      },
+      "id": "Field_04bk7ih",
       "key": "document"
     }
   ],
