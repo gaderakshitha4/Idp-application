@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="f35ea64" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.7.0">
+  <bpmn:process id="Chech-Service-Invoice" name="Chech-Service-Invoice" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:versionTag value="1.0" />
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1" name="IDP Process initiated">
+      <bpmn:outgoing>Flow_16ewaid</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_16ewaid" sourceRef="StartEvent_1" targetRef="Activity_04pptz1" />
+    <bpmn:userTask id="Activity_04pptz1" name="Upload invoice">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+        <zeebe:formDefinition formId="upload-document" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_16ewaid</bpmn:incoming>
+      <bpmn:outgoing>Flow_0t3s3xm</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0t3s3xm" sourceRef="Activity_04pptz1" targetRef="Activity_0lmokqy" />
+    <bpmn:sequenceFlow id="Flow_0go0m8p" sourceRef="Activity_0lmokqy" targetRef="Activity_0volcgj" />
+    <bpmn:userTask id="Activity_0volcgj" name="View data">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0go0m8p</bpmn:incoming>
+      <bpmn:outgoing>Flow_0g6dshk</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_0lmokqy" name="Extract data from invoice" zeebe:modelerTemplate="f7314f48-6f7b-4e9a-bf57-a9ccddc347ce" zeebe:modelerTemplateVersion="1748691712478" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjE5LjE3ODkiIGhlaWdodD0iMTkuMTc4OSIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC4wMSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOm11bHRpcGx5Ii8+CjxwYXRoIGQ9Ik0xNi43ODA2IDcuMTkyMDhIMTEuOTg1OVYyLjM5NzM3SDE2Ljc4MDZWNy4xOTIwOFpNMTMuMTg0NiA1Ljk5MzRIMTUuNTgxOVYzLjU5NjA1SDEzLjE4NDZWNS45OTM0WiIgZmlsbD0iI0ZDNUQwRCIvPgo8cGF0aCBkPSJNMTAuMTg3OSA4Ljk5MDFWNS4zOTQwN0g1LjM5MzE4VjEzLjc4NDhIMTMuNzgzOVY4Ljk5MDFIMTAuMTg3OVpNNi41OTE4NiA2LjU5Mjc0SDguOTg5MjFWOC45OTAxSDYuNTkxODZWNi41OTI3NFpNOC45ODkyMSAxMi41ODYxSDYuNTkxODZWMTAuMTg4OEg4Ljk4OTIxVjEyLjU4NjFaTTEyLjU4NTIgMTIuNTg2MUgxMC4xODc5VjEwLjE4ODhIMTIuNTg1MlYxMi41ODYxWiIgZmlsbD0iI0ZDNUQwRCIvPgo8cGF0aCBkPSJNMTUuNTgxOSAxNi43ODE1SDMuNTk1MTZDMy4yNzczNyAxNi43ODExIDIuOTcyNjkgMTYuNjU0NyAyLjc0Nzk3IDE2LjQzQzIuNTIzMjYgMTYuMjA1MyAyLjM5Njg1IDE1LjkwMDYgMi4zOTY0OCAxNS41ODI4VjMuNTk2MDVDMi4zOTY4NSAzLjI3ODI1IDIuNTIzMjYgMi45NzM1NyAyLjc0Nzk3IDIuNzQ4ODZDMi45NzI2OSAyLjUyNDE0IDMuMjc3MzcgMi4zOTc3MyAzLjU5NTE2IDIuMzk3MzdIOS41ODg1NVYzLjU5NjA1SDMuNTk1MTZWMTUuNTgyOEgxNS41ODE5VjkuNTg5NDRIMTYuNzgwNlYxNS41ODI4QzE2Ljc4MDMgMTUuOTAwNiAxNi42NTM5IDE2LjIwNTMgMTYuNDI5MSAxNi40M0MxNi4yMDQ0IDE2LjY1NDcgMTUuODk5NyAxNi43ODExIDE1LjU4MTkgMTYuNzgxNVoiIGZpbGw9IiMxNjE2MTYiLz4KPC9zdmc+Cg==">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:idp-extraction-connector-template:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="=document" target="input.document" />
+          <zeebe:input source="=[&#10;  {&#10;    &#34;name&#34;: &#34;date&#34;,&#10;    &#34;prompt&#34;: &#34;find the date when this invoice is sending&#34;&#10;  },&#10;  {&#10;    &#34;name&#34;: &#34;customerId&#34;,&#10;    &#34;prompt&#34;: &#34;find the customer id from invoice&#34;&#10;  },&#10;  {&#10;    &#34;name&#34;: &#34;name&#34;,&#10;    &#34;prompt&#34;: &#34;find the name to sending or company name&#34;&#10;  },&#10;  {&#10;    &#34;name&#34;: &#34;companyName&#34;,&#10;    &#34;prompt&#34;: &#34;find the name or company whom to sending this invoice&#34;&#10;  },&#10;  {&#10;    &#34;name&#34;: &#34;amount&#34;,&#10;    &#34;prompt&#34;: &#34;find the total amount from invoice&#34;&#10;  }&#10;]" target="input.taxonomyItems" />
+          <zeebe:input source="={&#10;  &#34;modelId&#34;: &#34;anthropic.claude-3-sonnet-20240229-v1:0&#34;&#10;}" target="input.converseData" />
+          <zeebe:input source="aws" target="baseRequest.type" />
+          <zeebe:input source="credentials" target="baseRequest.authentication.type" />
+          <zeebe:input source="{{secrets.IDP_AWS_ACCESSKEY}}" target="baseRequest.authentication.accessKey" />
+          <zeebe:input source="{{secrets.IDP_AWS_SECRETKEY}}" target="baseRequest.authentication.secretKey" />
+          <zeebe:input source="{{secrets.IDP_AWS_BUCKET_NAME}}" target="baseRequest.s3BucketName" />
+          <zeebe:input source="AWS_TEXTRACT" target="baseRequest.extractionEngineType" />
+          <zeebe:input source="{{secrets.IDP_AWS_REGION}}" target="baseRequest.configuration.region" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="retryBackoff" value="PT0S" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0t3s3xm</bpmn:incoming>
+      <bpmn:outgoing>Flow_0go0m8p</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_1ftyoqn" name="Process completed">
+      <bpmn:incoming>Flow_0g6dshk</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0g6dshk" sourceRef="Activity_0volcgj" targetRef="Event_1ftyoqn" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Chech-Service-Invoice">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="150" y="100" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="138" y="143" width="62" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1fmx6qp_di" bpmnElement="Activity_04pptz1">
+        <dc:Bounds x="240" y="78" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0wcr9mh_di" bpmnElement="Activity_0volcgj">
+        <dc:Bounds x="560" y="78" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ftyoqn_di" bpmnElement="Event_1ftyoqn">
+        <dc:Bounds x="722" y="100" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="715" y="143" width="51" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ofy54n_di" bpmnElement="Activity_0lmokqy">
+        <dc:Bounds x="400" y="78" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_16ewaid_di" bpmnElement="Flow_16ewaid">
+        <di:waypoint x="186" y="118" />
+        <di:waypoint x="240" y="118" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0t3s3xm_di" bpmnElement="Flow_0t3s3xm">
+        <di:waypoint x="340" y="118" />
+        <di:waypoint x="400" y="118" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0go0m8p_di" bpmnElement="Flow_0go0m8p">
+        <di:waypoint x="500" y="118" />
+        <di:waypoint x="560" y="118" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0g6dshk_di" bpmnElement="Flow_0g6dshk">
+        <di:waypoint x="660" y="118" />
+        <di:waypoint x="722" y="118" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
