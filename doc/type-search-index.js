@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.dis.idp","l":"IdpApplication"},{"p":"com.dis.idp","l":"IdpApplicationTests"},{"p":"com.dis.idp.controller","l":"IDPProcessController"}];updateSearchResults();
