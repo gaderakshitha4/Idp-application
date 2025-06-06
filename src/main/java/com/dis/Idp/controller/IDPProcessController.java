@@ -21,10 +21,10 @@ public class IDPProcessController {
 
 	private ZeebeClient zeebeClient;
 
-	TaskSearch ts = new TaskSearch().setProcessInstanceKey("2251799818839086");
+	//TaskSearch ts = new TaskSearch().setProcessInstanceKey("2251799818839086");
 	
 	
-	@PostMapping("/start-process")
+	@PostMapping("/start/idp/process")
 	public Map<String, Object> startLoanProcess() {
 		ProcessInstanceEvent processInstance = zeebeClient.newCreateInstanceCommand()
 				.bpmnProcessId("Chech-Service-Invoice")
